@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Train the Bot - Testing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-white min-h-screen p-8">
+
+  <div class="max-w-2xl mx-auto">
+    <h1 class="text-2xl font-bold mb-2">Testing Your Model</h1>
+    <p class="text-slate-400 text-sm mb-6">Let's see how your model performs on new images...</p>
+
+    <!-- Test Image Display -->
+    <div id="test-area" class="bg-slate-800 p-6 rounded-lg mb-6">
+      <div id="test-image" class="w-32 h-32 mx-auto rounded-lg flex items-center justify-center text-center text-sm p-2 mb-4">
+        <!-- Test image placeholder will appear here -->
+      </div>
+      <p id="test-label" class="text-center text-lg font-bold mb-2"></p>
+      <p id="test-status" class="text-center text-slate-400"></p>
+    </div>
+
+    <!-- Skip Button -->
+    <div id="skip-container" class="text-center mb-6">
+      <button id="skip-btn" class="bg-slate-700 hover:bg-slate-600 text-white px-5 py-2 rounded-lg transition">
+        Skip to Results
+      </button>
+    </div>
+
+    <!-- Results (hidden until all tests complete) -->
+    <div id="results" class="hidden">
+      <div class="bg-slate-800 p-6 rounded-lg mb-6">
+        <h2 class="text-xl font-bold mb-3">Results</h2>
+        <p class="text-3xl font-bold mb-2"><span id="score">0</span> / <span id="total">5</span> correct</p>
+        <div id="result-list" class="mt-4 space-y-2">
+          <!-- Individual results will appear here -->
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <a href="scenario2.html" class="bg-slate-700 hover:bg-slate-600 text-white font-semibold px-6 py-3 rounded-lg inline-block transition">
+          Try Again
+        </a>
+        <a href="index.html" class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold px-6 py-3 rounded-lg inline-block transition">
+          Continue
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="scenario2.js"></script>
+  <script src="scenario2-test.js"></script>
+</body>
+</html>

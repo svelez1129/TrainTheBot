@@ -10,18 +10,29 @@
 
   <div class="max-w-2xl mx-auto text-center mt-20">
     <h1 class="text-4xl font-bold mb-4">Train the Bot</h1>
-    <p class="text-slate-400 text-lg mb-8">Learn how AI models learn from data — and how bias sneaks in.</p>
+    <p class="text-slate-400 text-lg mb-6">Learn how AI models learn from data — and how bias sneaks in.</p>
+    <p class="text-slate-500 text-sm mb-8">by <a href="https://github.com/svelez1129" target="_blank" class="text-cyan-400 hover:text-cyan-300 transition">svelez1129</a></p>
     
     <div class="bg-slate-800 p-6 rounded-lg mb-8 text-left">
       <h2 class="text-xl font-bold mb-3">How to Play</h2>
       <p class="text-slate-300 mb-2">1. Select images to train your AI model</p>
-      <p class="text-slate-300 mb-2">2. Click "Train Model" when ready</p>
-      <p class="text-slate-300">3. See how your model performs on new images</p>
+      <p class="text-slate-300 mb-2">2. Label each image (what category is it?)</p>
+      <p class="text-slate-300">3. See how your model performs on new images it hasn't seen!</p>
     </div>
 
-    <a href="scenario1-intro.html" class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold px-6 py-3 rounded-lg inline-block transition">
-      Start Game
-    </a>
+    <h2 class="text-xl font-bold mb-4">Choose a Scenario</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <a href="scenario1-intro.html" class="bg-slate-800 hover:bg-slate-700 p-6 rounded-lg text-left transition border-2 border-slate-700 hover:border-cyan-500">
+        <h3 class="text-lg font-bold mb-2">Scenario 1: Cats vs Dogs</h3>
+        <p class="text-slate-400 text-sm">Train the model to tell cats from dogs. Watch out for color bias!</p>
+      </a>
+
+      <a href="scenario2-intro.html" class="bg-slate-800 hover:bg-slate-700 p-6 rounded-lg text-left transition border-2 border-slate-700 hover:border-cyan-500">
+        <h3 class="text-lg font-bold mb-2">Scenario 2: Fruits vs Vegetables</h3>
+        <p class="text-slate-400 text-sm">Is a tomato a fruit or vegetable? Teach the model to decide!</p>
+      </a>
+    </div>
   </div>
 
 </body>
