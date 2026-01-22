@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Train the Bot - Review Training Set</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-900 text-white min-h-screen p-8">
+
+  <div class="max-w-2xl mx-auto">
+    <h1 class="text-2xl font-bold mb-2">Your Training Set</h1>
+    <p class="text-slate-400 text-sm mb-6">This is what your model will learn from:</p>
+
+    <!-- Selected Images Display -->
+    <div id="selected-images" class="grid grid-cols-5 gap-3 mb-6">
+      <!-- Selected images will be inserted here by JavaScript -->
+    </div>
+
+    <div class="bg-slate-800 p-4 rounded-lg mb-6">
+      <p class="text-slate-300">The model will <span class="text-cyan-400 font-bold">only</span> learn from these
+        images. Ready to see how it performs?</p>
+    </div>
+
+    <div class="flex gap-4">
+      <a href="scenario1.html"
+        class="bg-slate-700 hover:bg-slate-600 text-white font-semibold px-6 py-3 rounded-lg inline-block transition">
+        ← Change Selection
+      </a>
+      <button id="start-test-btn"
+        class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold px-6 py-3 rounded-lg transition">
+        Train & Test →
+      </button>
+    </div>
+  </div>
+
+  <script src="scenario1.js"></script>
+  <script src="scenario1-review.js"></script>
+</body>
+
+</html>
