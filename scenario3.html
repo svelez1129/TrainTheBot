@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Train the Bot - Guess the Training Data</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-white min-h-screen p-8">
+
+  <div class="max-w-2xl mx-auto">
+    <!-- Back to Menu -->
+    <a href="index.html" class="inline-flex items-center gap-2 text-slate-400 hover:text-white text-sm mb-4 transition">
+      <span>&larr;</span> Back to Menu
+    </a>
+
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-6">
+      <div>
+        <h1 class="text-2xl font-bold">Guess the Training Data</h1>
+        <p class="text-slate-400 text-sm">Round <span id="round-number">1</span> of 5</p>
+      </div>
+      <div class="text-right">
+        <p class="text-slate-400 text-sm">Score</p>
+        <p class="text-2xl font-bold text-cyan-400"><span id="score">0</span>/5</p>
+      </div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="w-full bg-slate-700 rounded-full h-2 mb-6">
+      <div id="progress-bar" class="bg-cyan-500 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+    </div>
+
+    <!-- AI Demo Area -->
+    <div id="demo-area" class="bg-slate-800 p-6 rounded-lg mb-6">
+      <p class="text-slate-400 text-sm uppercase tracking-wider mb-4">Watch the AI complete these sentences:</p>
+
+      <div id="demonstrations" class="space-y-4">
+        <!-- Demonstrations will be inserted here -->
+      </div>
+    </div>
+
+    <!-- Question Area -->
+    <div id="question-area" class="hidden">
+      <p class="text-lg font-medium mb-4">What was this AI trained on?</p>
+
+      <div id="options" class="space-y-2 mb-6">
+        <!-- Options will be inserted here -->
+      </div>
+    </div>
+
+    <!-- Feedback Area (shown after answering) -->
+    <div id="feedback-area" class="hidden">
+      <div id="feedback-box" class="p-4 rounded-lg mb-4">
+        <p id="feedback-result" class="font-bold text-lg mb-2"></p>
+        <p id="feedback-explanation" class="text-sm"></p>
+      </div>
+
+      <div class="bg-slate-700/50 p-4 rounded-lg mb-6">
+        <p class="text-slate-400 text-sm uppercase tracking-wider mb-2">The actual training data:</p>
+        <ul id="training-reveal" class="space-y-1 text-sm">
+          <!-- Training sentences revealed here -->
+        </ul>
+      </div>
+
+      <button id="next-btn" class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold px-6 py-3 rounded-lg transition">
+        Next Round
+      </button>
+    </div>
+
+    <!-- Final Results (shown after all rounds) -->
+    <div id="final-results" class="hidden">
+      <div class="bg-slate-800 p-6 rounded-lg mb-6 text-center">
+        <p class="text-slate-400 mb-2">Final Score</p>
+        <p class="text-5xl font-bold text-cyan-400 mb-4"><span id="final-score">0</span>/5</p>
+        <p id="final-message" class="text-slate-300"></p>
+      </div>
+
+      <div class="flex gap-4">
+        <button id="play-again-btn" class="flex-1 bg-slate-700 hover:bg-slate-600 px-4 py-3 rounded-lg transition">
+          Play Again
+        </button>
+        <a href="index.html" class="flex-1 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold px-4 py-3 rounded-lg transition text-center">
+          Back to Menu
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="scenario3.js"></script>
+  <script src="game3.js"></script>
+</body>
+</html>

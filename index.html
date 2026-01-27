@@ -8,11 +8,33 @@
 </head>
 <body class="bg-slate-900 text-white min-h-screen p-8">
 
-  <div class="max-w-2xl mx-auto text-center mt-20">
+  <div class="max-w-2xl mx-auto text-center mt-12">
     <h1 class="text-4xl font-bold mb-4">Train the Bot</h1>
     <p class="text-slate-400 text-lg mb-6">Learn how AI models learn from data — and how bias sneaks in.</p>
     <p class="text-slate-500 text-sm mb-8">by <a href="https://github.com/svelez1129" target="_blank" class="text-cyan-400 hover:text-cyan-300 transition">svelez1129</a></p>
-    
+
+    <!-- Progress Tracker -->
+    <div id="progress-tracker" class="bg-slate-800 p-4 rounded-lg mb-6">
+      <div class="flex justify-between items-center mb-3">
+        <h3 class="font-bold text-slate-300">Your Progress</h3>
+        <span id="progress-text" class="text-cyan-400 font-bold">0/3 Complete</span>
+      </div>
+      <div class="flex gap-2">
+        <div id="prog-1" class="flex-1 h-2 bg-slate-600 rounded-full">
+          <div class="h-2 bg-slate-600 rounded-full"></div>
+        </div>
+        <div id="prog-2" class="flex-1 h-2 bg-slate-600 rounded-full">
+          <div class="h-2 bg-slate-600 rounded-full"></div>
+        </div>
+        <div id="prog-3" class="flex-1 h-2 bg-slate-600 rounded-full">
+          <div class="h-2 bg-slate-600 rounded-full"></div>
+        </div>
+      </div>
+      <button id="reset-progress" class="text-xs text-slate-500 hover:text-slate-300 mt-3 transition">
+        Reset Progress
+      </button>
+    </div>
+
     <div class="bg-slate-800 p-6 rounded-lg mb-8 text-left">
       <h2 class="text-xl font-bold mb-3">How to Play</h2>
       <p class="text-slate-300 mb-2">1. Select images to train your AI model</p>
@@ -22,18 +44,75 @@
 
     <h2 class="text-xl font-bold mb-4">Choose a Scenario</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <a href="scenario1-intro.html" class="bg-slate-800 hover:bg-slate-700 p-6 rounded-lg text-left transition border-2 border-slate-700 hover:border-cyan-500">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <a href="scenario1-intro.html" id="card-1" class="bg-slate-800 hover:bg-slate-700 p-6 rounded-lg text-left transition border-2 border-slate-700 hover:border-cyan-500 relative">
+        <div id="badge-1" class="hidden absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full font-bold">Done</div>
         <h3 class="text-lg font-bold mb-2">Scenario 1: Cats vs Dogs</h3>
         <p class="text-slate-400 text-sm">Train the model to tell cats from dogs. Watch out for color bias!</p>
       </a>
 
-      <a href="scenario2-intro.html" class="bg-slate-800 hover:bg-slate-700 p-6 rounded-lg text-left transition border-2 border-slate-700 hover:border-cyan-500">
+      <a href="scenario2-intro.html" id="card-2" class="bg-slate-800 hover:bg-slate-700 p-6 rounded-lg text-left transition border-2 border-slate-700 hover:border-cyan-500 relative">
+        <div id="badge-2" class="hidden absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full font-bold">Done</div>
         <h3 class="text-lg font-bold mb-2">Scenario 2: Fruits vs Vegetables</h3>
         <p class="text-slate-400 text-sm">Is a tomato a fruit or vegetable? Teach the model to decide!</p>
       </a>
+
+      <a href="scenario3-intro.html" id="card-3" class="bg-slate-800 hover:bg-slate-700 p-6 rounded-lg text-left transition border-2 border-slate-700 hover:border-cyan-500 relative">
+        <div id="badge-3" class="hidden absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full font-bold">Done</div>
+        <h3 class="text-lg font-bold mb-2">Scenario 3: Guess the Training Data</h3>
+        <p class="text-slate-400 text-sm">Watch an AI's predictions and figure out what it was trained on!</p>
+      </a>
+    </div>
+
+    <!-- View Summary Button (shown when all complete) -->
+    <div id="summary-section" class="hidden">
+      <a href="summary.html" class="bg-green-500 hover:bg-green-400 text-slate-900 font-semibold px-8 py-4 rounded-lg inline-block transition text-lg">
+        View Your Summary
+      </a>
     </div>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      updateProgress();
+
+      document.getElementById("reset-progress").addEventListener("click", function() {
+        localStorage.removeItem("scenario1Complete");
+        localStorage.removeItem("scenario2Complete");
+        localStorage.removeItem("scenario3Complete");
+        updateProgress();
+      });
+    });
+
+    function updateProgress() {
+      const s1 = localStorage.getItem("scenario1Complete") === "true";
+      const s2 = localStorage.getItem("scenario2Complete") === "true";
+      const s3 = localStorage.getItem("scenario3Complete") === "true";
+
+      const completed = (s1 ? 1 : 0) + (s2 ? 1 : 0) + (s3 ? 1 : 0);
+
+      // Update progress text
+      document.getElementById("progress-text").textContent = completed + "/3 Complete";
+
+      // Update progress bars
+      document.getElementById("prog-1").className = "flex-1 h-2 rounded-full " + (s1 ? "bg-green-500" : "bg-slate-600");
+      document.getElementById("prog-2").className = "flex-1 h-2 rounded-full " + (s2 ? "bg-green-500" : "bg-slate-600");
+      document.getElementById("prog-3").className = "flex-1 h-2 rounded-full " + (s3 ? "bg-green-500" : "bg-slate-600");
+
+      // Update badges
+      document.getElementById("badge-1").classList.toggle("hidden", !s1);
+      document.getElementById("badge-2").classList.toggle("hidden", !s2);
+      document.getElementById("badge-3").classList.toggle("hidden", !s3);
+
+      // Update card borders for completed
+      document.getElementById("card-1").classList.toggle("border-green-500", s1);
+      document.getElementById("card-2").classList.toggle("border-green-500", s2);
+      document.getElementById("card-3").classList.toggle("border-green-500", s3);
+
+      // Show summary button if all complete
+      document.getElementById("summary-section").classList.toggle("hidden", completed < 3);
+    }
+  </script>
 
 </body>
 </html>

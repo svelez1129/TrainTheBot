@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Train the Bot - Summary</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-white min-h-screen p-8">
+
+  <div class="max-w-2xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="text-6xl mb-4">🎉</div>
+      <h1 class="text-3xl font-bold mb-2">Congratulations!</h1>
+      <p class="text-slate-400">You've completed all 3 scenarios</p>
+    </div>
+
+    <!-- Key Takeaways -->
+    <div class="bg-slate-800 p-6 rounded-lg mb-6">
+      <h2 class="text-xl font-bold mb-4 text-cyan-400">Key Takeaways</h2>
+
+      <div class="space-y-6">
+        <!-- Takeaway 1 -->
+        <div class="flex gap-4">
+          <div class="text-2xl">📊</div>
+          <div>
+            <h3 class="font-bold text-white mb-1">AI Learns From Data</h3>
+            <p class="text-slate-300 text-sm">AI models can only learn from the data they're trained on. If the training data is limited, the AI's knowledge will be limited too.</p>
+          </div>
+        </div>
+
+        <!-- Takeaway 2 -->
+        <div class="flex gap-4">
+          <div class="text-2xl">⚠️</div>
+          <div>
+            <h3 class="font-bold text-white mb-1">Bias Comes From Training</h3>
+            <p class="text-slate-300 text-sm">If training data is biased or incomplete, the AI will make biased or incorrect predictions. Missing examples = missing knowledge.</p>
+          </div>
+        </div>
+
+        <!-- Takeaway 3 -->
+        <div class="flex gap-4">
+          <div class="text-2xl">🔍</div>
+          <div>
+            <h3 class="font-bold text-white mb-1">You Can Spot AI Bias</h3>
+            <p class="text-slate-300 text-sm">By looking at an AI's outputs, you can often figure out what it was trained on — and what's missing. This is a critical skill in the AI age.</p>
+          </div>
+        </div>
+
+        <!-- Takeaway 4 -->
+        <div class="flex gap-4">
+          <div class="text-2xl">🎯</div>
+          <div>
+            <h3 class="font-bold text-white mb-1">Diverse Data = Better AI</h3>
+            <p class="text-slate-300 text-sm">The best AI models are trained on diverse, representative data. This helps them handle new situations they haven't seen before.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- What You Learned in Each Scenario -->
+    <div class="bg-slate-800 p-6 rounded-lg mb-6">
+      <h2 class="text-xl font-bold mb-4">What You Learned</h2>
+
+      <div class="space-y-4">
+        <div class="bg-slate-700/50 p-4 rounded-lg">
+          <h3 class="font-bold text-cyan-400 mb-1">Scenario 1: Cats vs Dogs</h3>
+          <p class="text-slate-300 text-sm">Missing training examples (like black cats or fluffy dogs) cause the AI to fail on those specific cases.</p>
+        </div>
+
+        <div class="bg-slate-700/50 p-4 rounded-lg">
+          <h3 class="font-bold text-cyan-400 mb-1">Scenario 2: Fruits vs Vegetables</h3>
+          <p class="text-slate-300 text-sm">Similar-looking items with different labels (red apple vs red tomato) can confuse AI when it relies on simple patterns like color.</p>
+        </div>
+
+        <div class="bg-slate-700/50 p-4 rounded-lg">
+          <h3 class="font-bold text-cyan-400 mb-1">Scenario 3: Guess the Training Data</h3>
+          <p class="text-slate-300 text-sm">AI outputs reveal patterns from training data. You can "reverse engineer" what an AI learned by observing its behavior.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Real World Connection -->
+    <div class="bg-purple-900/30 border border-purple-500/30 p-6 rounded-lg mb-6">
+      <h2 class="text-lg font-bold mb-3 text-purple-200">Why This Matters in the Real World</h2>
+      <p class="text-purple-100 text-sm mb-3">The same principles apply to real AI systems like ChatGPT, image recognition, and recommendation algorithms:</p>
+      <ul class="text-purple-100 text-sm space-y-2">
+        <li>• <strong>Hiring AI</strong> trained mostly on male resumes may unfairly reject female candidates</li>
+        <li>• <strong>Medical AI</strong> trained on one population may fail for patients from different backgrounds</li>
+        <li>• <strong>Language models</strong> reflect the biases present in the text they were trained on</li>
+      </ul>
+    </div>
+
+    <!-- Actions -->
+    <div class="flex gap-4">
+      <a href="index.html" class="flex-1 bg-slate-700 hover:bg-slate-600 text-white font-semibold px-6 py-3 rounded-lg text-center transition">
+        Back to Menu
+      </a>
+      <button id="play-again-btn" class="flex-1 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold px-6 py-3 rounded-lg transition">
+        Play Again
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("play-again-btn").addEventListener("click", function() {
+      localStorage.removeItem("scenario1Complete");
+      localStorage.removeItem("scenario2Complete");
+      localStorage.removeItem("scenario3Complete");
+      window.location.href = "index.html";
+    });
+  </script>
+
+</body>
+</html>
