@@ -1,3 +1,6 @@
+# To play
+https://svelez1129.github.io/TrainTheBot/
+
 # TrainTheBot
 
 Interactive game teaching students how AI learns from data. Made for The Coding School.
@@ -20,6 +23,3 @@ Interactive game teaching students how AI learns from data. Made for The Coding 
 - Tailwind CSS via CDN
 - localStorage for progress tracking
 
-## Run
-
-Open `index.html` in a browser.
