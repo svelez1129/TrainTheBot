@@ -161,8 +161,9 @@ function nextRound() {
 }
 
 function showFinalResults() {
-  // Mark scenario as complete
+  // Mark scenario as complete with score
   localStorage.setItem("scenario3Complete", "true");
+  localStorage.setItem("scenario3Score", score);
 
   // Hide everything except final results
   document.getElementById("demo-area").classList.add("hidden");

@@ -133,8 +133,9 @@ function skipToResults() {
 }
 
 function showFinalResults() {
-    // Mark scenario as complete
+    // Mark scenario as complete with score
     localStorage.setItem("scenario2Complete", "true");
+    localStorage.setItem("scenario2Score", correctCount);
 
     document.getElementById("test-area").classList.add("hidden");
     document.getElementById("skip-container").classList.add("hidden");
