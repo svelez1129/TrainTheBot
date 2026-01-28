@@ -1,0 +1,59 @@
+/* Train the Bot - Shared Styles */
+
+/* ================================
+   Pulsing Glow Animations
+   ================================ */
+
+/* Scenario 1: Cats vs Dogs */
+@keyframes pulse-glow-blue {
+  0%, 100% { box-shadow: 0 0 5px #60a5fa, 0 0 10px #60a5fa; }
+  50% { box-shadow: 0 0 15px #60a5fa, 0 0 25px #60a5fa; }
+}
+@keyframes pulse-glow-amber {
+  0%, 100% { box-shadow: 0 0 5px #fbbf24, 0 0 10px #fbbf24; }
+  50% { box-shadow: 0 0 15px #fbbf24, 0 0 25px #fbbf24; }
+}
+.glow-blue { animation: pulse-glow-blue 2s ease-in-out infinite; }
+.glow-amber { animation: pulse-glow-amber 2s ease-in-out infinite; }
+
+/* Scenario 2: Fruits vs Vegetables */
+@keyframes pulse-glow-green {
+  0%, 100% { box-shadow: 0 0 5px #4ade80, 0 0 10px #4ade80; }
+  50% { box-shadow: 0 0 15px #4ade80, 0 0 25px #4ade80; }
+}
+@keyframes pulse-glow-orange {
+  0%, 100% { box-shadow: 0 0 5px #fb923c, 0 0 10px #fb923c; }
+  50% { box-shadow: 0 0 15px #fb923c, 0 0 25px #fb923c; }
+}
+.glow-green { animation: pulse-glow-green 2s ease-in-out infinite; }
+.glow-orange { animation: pulse-glow-orange 2s ease-in-out infinite; }
+
+/* Scenario 3: Feedback glow (reuses green, adds red) */
+@keyframes pulse-glow-red {
+  0%, 100% { box-shadow: 0 0 5px #ef4444, 0 0 10px #ef4444; }
+  50% { box-shadow: 0 0 15px #ef4444, 0 0 25px #ef4444; }
+}
+.glow-red { animation: pulse-glow-red 2s ease-in-out infinite; }
+
+/* ================================
+   Score Animation (Scenario 3)
+   ================================ */
+@keyframes bounce-scale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+.score-bounce {
+  animation: bounce-scale 0.3s ease-out;
+}
+
+/* ================================
+   Typing Animation (Scenario 3)
+   ================================ */
+.typing-cursor::after {
+  content: '|';
+  animation: blink 0.7s infinite;
+}
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
