@@ -42,7 +42,7 @@ function renderTrainingImages(images) {
   images.forEach(function(image) {
     const div = document.createElement("div");
     div.id = image.id;
-    div.className = "aspect-square rounded-lg flex flex-col items-center justify-end text-center cursor-pointer border-2 border-slate-600 hover:border-slate-500 transition overflow-hidden relative";
+    div.className = "aspect-square rounded-lg flex flex-col items-center justify-end text-center cursor-pointer border-2 border-slate-600 hover:border-slate-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-black/50 transition-all duration-200 overflow-hidden relative";
 
     if (image.imageUrl) {
       // Use actual image
@@ -149,14 +149,14 @@ function labelImage(label) {
 // Update image border based on label
 function updateImageBorder(id, label) {
   const div = document.getElementById(id);
-  
-  // Remove all border classes
-  div.classList.remove("border-slate-600", "border-blue-400", "border-amber-400");
-  
+
+  // Remove all border and glow classes
+  div.classList.remove("border-slate-600", "border-blue-400", "border-amber-400", "glow-blue", "glow-amber");
+
   if (label === "cat") {
-    div.classList.add("border-blue-400");
+    div.classList.add("border-blue-400", "glow-blue");
   } else if (label === "dog") {
-    div.classList.add("border-amber-400");
+    div.classList.add("border-amber-400", "glow-amber");
   } else {
     div.classList.add("border-slate-600");
   }

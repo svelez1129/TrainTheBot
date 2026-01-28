@@ -31,7 +31,7 @@ function renderTrainingImages(images) {
   images.forEach(function(image) {
     const div = document.createElement("div");
     div.id = image.id;
-    div.className = "aspect-square rounded-lg flex flex-col items-center justify-end text-center cursor-pointer border-2 border-slate-600 hover:border-slate-500 transition overflow-hidden relative";
+    div.className = "aspect-square rounded-lg flex flex-col items-center justify-end text-center cursor-pointer border-2 border-slate-600 hover:border-slate-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-black/50 transition-all duration-200 overflow-hidden relative";
 
     if (image.imageUrl) {
       div.style.backgroundImage = "url(" + image.imageUrl + ")";
@@ -114,12 +114,12 @@ function labelImage(label) {
 
 function updateImageBorder(id, label) {
   const div = document.getElementById(id);
-  div.classList.remove("border-slate-600", "border-green-400", "border-orange-400");
+  div.classList.remove("border-slate-600", "border-green-400", "border-orange-400", "glow-green", "glow-orange");
 
   if (label === "fruit") {
-    div.classList.add("border-green-400");
+    div.classList.add("border-orange-400", "glow-orange");
   } else if (label === "vegetable") {
-    div.classList.add("border-orange-400");
+    div.classList.add("border-green-400", "glow-green");
   } else {
     div.classList.add("border-slate-600");
   }

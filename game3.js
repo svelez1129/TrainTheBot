@@ -57,8 +57,8 @@ function showNextDemo() {
   div.innerHTML = `
     <div class="flex items-center gap-2 flex-wrap">
       <span class="text-slate-300">"${demo.starter}</span>
-      <span class="text-cyan-400 font-bold typing-animation">${demo.prediction}</span>
-      <span class="text-slate-300">"</span>
+      <span id="typing-${demoIndex}" class="text-cyan-400 font-bold typing-cursor"></span>
+      <span id="quote-end-${demoIndex}" class="text-slate-300 hidden">"</span>
     </div>
   `;
 
@@ -69,10 +69,28 @@ function showNextDemo() {
     div.classList.remove("opacity-0");
   }, 100);
 
+  // Start typing animation after fade in
+  const typingEl = document.getElementById("typing-" + demoIndex);
+  const quoteEnd = document.getElementById("quote-end-" + demoIndex);
+  const text = demo.prediction;
+  let charIndex = 0;
+
+  const typeInterval = setInterval(() => {
+    if (charIndex < text.length) {
+      typingEl.textContent += text[charIndex];
+      charIndex++;
+    } else {
+      clearInterval(typeInterval);
+      typingEl.classList.remove("typing-cursor");
+      quoteEnd.classList.remove("hidden");
+    }
+  }, 30); // 30ms per character for quick typing
+
   demoIndex++;
 
-  // Show next demo after delay
-  setTimeout(showNextDemo, 1200);
+  // Show next demo after typing completes + small pause
+  const typingDuration = text.length * 30 + 400;
+  setTimeout(showNextDemo, typingDuration);
 }
 
 function showQuestion() {
@@ -105,7 +123,12 @@ function handleAnswer(selectedOption) {
 
   if (isCorrect) {
     score++;
-    document.getElementById("score").textContent = score;
+    const scoreEl = document.getElementById("score");
+    scoreEl.textContent = score;
+    // Trigger bounce animation
+    scoreEl.classList.remove("score-bounce");
+    void scoreEl.offsetWidth; // Force reflow to restart animation
+    scoreEl.classList.add("score-bounce");
   }
 
   // Hide question, show feedback
@@ -118,11 +141,11 @@ function handleAnswer(selectedOption) {
   const feedbackExplanation = document.getElementById("feedback-explanation");
 
   if (isCorrect) {
-    feedbackBox.className = "p-4 rounded-lg mb-4 bg-green-900/30 border border-green-500/30";
+    feedbackBox.className = "p-4 rounded-lg mb-4 bg-green-900/30 border border-green-500/30 glow-green";
     feedbackResult.className = "font-bold text-lg mb-2 text-green-400";
     feedbackResult.textContent = "Correct!";
   } else {
-    feedbackBox.className = "p-4 rounded-lg mb-4 bg-red-900/30 border border-red-500/30";
+    feedbackBox.className = "p-4 rounded-lg mb-4 bg-red-900/30 border border-red-500/30 glow-red";
     feedbackResult.className = "font-bold text-lg mb-2 text-red-400";
     const correctAnswer = currentRoundData.options.find(o => o.correct);
     feedbackResult.textContent = "Not quite! The answer was: " + correctAnswer.text;

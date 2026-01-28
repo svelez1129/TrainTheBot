@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Train the Bot - Fruits vs Vegetables</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes pulse-glow-green {
+      0%, 100% { box-shadow: 0 0 5px #4ade80, 0 0 10px #4ade80; }
+      50% { box-shadow: 0 0 15px #4ade80, 0 0 25px #4ade80; }
+    }
+    @keyframes pulse-glow-orange {
+      0%, 100% { box-shadow: 0 0 5px #fb923c, 0 0 10px #fb923c; }
+      50% { box-shadow: 0 0 15px #fb923c, 0 0 25px #fb923c; }
+    }
+    .glow-green { animation: pulse-glow-green 2s ease-in-out infinite; }
+    .glow-orange { animation: pulse-glow-orange 2s ease-in-out infinite; }
+  </style>
 </head>
 <body class="bg-slate-900 text-white min-h-screen p-8">
 
@@ -24,11 +36,11 @@
     <!-- Legend -->
     <div class="flex gap-4 mb-4 text-sm">
       <div class="flex items-center gap-2">
-        <div class="w-4 h-4 rounded border-2 border-green-400"></div>
+        <div class="w-4 h-4 rounded border-2 border-orange-400"></div>
         <span class="text-slate-400">Labeled as Fruit</span>
       </div>
       <div class="flex items-center gap-2">
-        <div class="w-4 h-4 rounded border-2 border-orange-400"></div>
+        <div class="w-4 h-4 rounded border-2 border-green-400"></div>
         <span class="text-slate-400">Labeled as Vegetable</span>
       </div>
     </div>
@@ -58,10 +70,10 @@
       </div>
 
       <div class="flex gap-3">
-        <button id="label-a-btn" class="flex-1 p-3 bg-green-500/20 border-2 border-green-400 rounded-lg text-green-400 font-semibold hover:bg-green-500/30 transition">
+        <button id="label-a-btn" class="flex-1 p-3 bg-orange-500/20 border-2 border-orange-400 rounded-lg text-orange-400 font-semibold hover:bg-orange-500/30 transition">
           Fruit
         </button>
-        <button id="label-b-btn" class="flex-1 p-3 bg-orange-500/20 border-2 border-orange-400 rounded-lg text-orange-400 font-semibold hover:bg-orange-500/30 transition">
+        <button id="label-b-btn" class="flex-1 p-3 bg-green-500/20 border-2 border-green-400 rounded-lg text-green-400 font-semibold hover:bg-green-500/30 transition">
           Vegetable
         </button>
       </div>
