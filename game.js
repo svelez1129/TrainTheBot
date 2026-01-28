@@ -10,7 +10,7 @@ let currentImageId = null;
 // Initialize when page loads
 document.addEventListener("DOMContentLoaded", function() {
   const imageGrid = document.getElementById("image-grid");
-  
+
   // Only run if we're on a scenario page with an image grid
   if (imageGrid && typeof scenario1 !== "undefined") {
     renderTrainingImages(scenario1.trainingImages);
@@ -42,15 +42,30 @@ function renderTrainingImages(images) {
   images.forEach(function(image) {
     const div = document.createElement("div");
     div.id = image.id;
-    div.className = "aspect-square rounded-lg flex items-center justify-center text-center text-xs p-2 cursor-pointer border-2 border-slate-600 hover:border-slate-500 transition";
-    div.style.backgroundColor = image.placeholderColor;
-    
-    // Use dark text for light backgrounds
-    const isLightColor = isLight(image.placeholderColor);
-    div.style.color = isLightColor ? "#1e293b" : "#ffffff";
-    
-    div.textContent = image.label;
-    
+    div.className = "aspect-square rounded-lg flex flex-col items-center justify-end text-center cursor-pointer border-2 border-slate-600 hover:border-slate-500 transition overflow-hidden relative";
+
+    if (image.imageUrl) {
+      // Use actual image
+      div.style.backgroundImage = "url(" + image.imageUrl + ")";
+      div.style.backgroundSize = "cover";
+      div.style.backgroundPosition = "center";
+
+      // Add label overlay at bottom
+      const label = document.createElement("div");
+      label.className = "w-full bg-black/60 text-white text-xs py-1 px-1";
+      label.textContent = image.label;
+      div.appendChild(label);
+    } else {
+      // Fallback to colored placeholder
+      div.style.backgroundColor = image.placeholderColor;
+      div.classList.add("justify-center");
+      div.classList.remove("justify-end");
+
+      const isLightColor = isLight(image.placeholderColor);
+      div.style.color = isLightColor ? "#1e293b" : "#ffffff";
+      div.innerHTML = "<span class='text-xs p-2'>" + image.label + "</span>";
+    }
+
     div.addEventListener("click", function() {
       handleImageClick(image.id);
     });
@@ -89,12 +104,24 @@ function showModal(id) {
   const image = scenario1.trainingImages.find(function(img) {
     return img.id === id;
   });
-  
+
   const modalImage = document.getElementById("modal-image");
-  modalImage.style.backgroundColor = image.placeholderColor;
-  modalImage.textContent = image.label;
-  modalImage.style.color = isLight(image.placeholderColor) ? "#1e293b" : "#ffffff";
-  
+
+  if (image.imageUrl) {
+    // Use actual image
+    modalImage.style.backgroundImage = "url(" + image.imageUrl + ")";
+    modalImage.style.backgroundSize = "cover";
+    modalImage.style.backgroundPosition = "center";
+    modalImage.style.backgroundColor = "transparent";
+    modalImage.textContent = "";
+  } else {
+    // Fallback to placeholder
+    modalImage.style.backgroundImage = "";
+    modalImage.style.backgroundColor = image.placeholderColor;
+    modalImage.textContent = image.label;
+    modalImage.style.color = isLight(image.placeholderColor) ? "#1e293b" : "#ffffff";
+  }
+
   document.getElementById("label-modal").classList.remove("hidden");
 }
 

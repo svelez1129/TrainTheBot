@@ -6,16 +6,16 @@ const scenario1 = {
   description: "Teach the model to tell cats from dogs",
   difficulty: 1,
   trainingImages: [
-    { id: "train-1", label: "Orange Tabby Cat", placeholderColor: "#f97316", imageUrl: "", category: "cat", tags: ["orange", "short-hair", "adult"] },
-    { id: "train-2", label: "White Cat", placeholderColor: "#f1f5f9", imageUrl: "", category: "cat", tags: ["white", "short-hair", "adult"] },
-    { id: "train-3", label: "Black Cat", placeholderColor: "#1e293b", imageUrl: "", category: "cat", tags: ["black", "short-hair", "adult"] },
-    { id: "train-4", label: "Fluffy Gray Cat", placeholderColor: "#9ca3af", imageUrl: "", category: "cat", tags: ["gray", "long-hair", "adult"] },
-    { id: "train-5", label: "Tabby Kitten", placeholderColor: "#fb923c", imageUrl: "", category: "cat", tags: ["orange", "short-hair", "baby"] },
-    { id: "train-6", label: "Golden Retriever", placeholderColor: "#fbbf24", imageUrl: "", category: "dog", tags: ["golden", "long-hair", "adult"] },
-    { id: "train-7", label: "Black Labrador", placeholderColor: "#0f172a", imageUrl: "", category: "dog", tags: ["black", "short-hair", "adult"] },
-    { id: "train-8", label: "White Poodle", placeholderColor: "#e2e8f0", imageUrl: "", category: "dog", tags: ["white", "long-hair", "adult"] },
-    { id: "train-9", label: "Brown Beagle", placeholderColor: "#a16207", imageUrl: "", category: "dog", tags: ["brown", "short-hair", "adult"] },
-    { id: "train-10", label: "Dalmatian Puppy", placeholderColor: "#e5e7eb", imageUrl: "", category: "dog", tags: ["white", "short-hair", "baby"] }
+    { id: "train-1", label: "Orange Tabby Cat", placeholderColor: "#f97316", imageUrl: "assets/orange-tabby-cat.jpg", category: "cat", tags: ["orange", "short-hair", "adult"] },
+    { id: "train-2", label: "White Cat", placeholderColor: "#f1f5f9", imageUrl: "assets/white-cat.jpg", category: "cat", tags: ["white", "short-hair", "adult"] },
+    { id: "train-3", label: "Black Cat", placeholderColor: "#1e293b", imageUrl: "assets/black-cat.jpg", category: "cat", tags: ["black", "short-hair", "adult"] },
+    { id: "train-4", label: "Fluffy Gray Cat", placeholderColor: "#9ca3af", imageUrl: "assets/fluffy-gray-cat.jpg", category: "cat", tags: ["gray", "long-hair", "adult"] },
+    { id: "train-5", label: "Tabby Kitten", placeholderColor: "#fb923c", imageUrl: "assets/tabby-kitten.jpg", category: "cat", tags: ["orange", "short-hair", "baby"] },
+    { id: "train-6", label: "Golden Retriever", placeholderColor: "#fbbf24", imageUrl: "assets/golden-retriever.jpg", category: "dog", tags: ["golden", "long-hair", "adult"] },
+    { id: "train-7", label: "Black Labrador", placeholderColor: "#0f172a", imageUrl: "assets/black-labrador.jpg", category: "dog", tags: ["black", "short-hair", "adult"] },
+    { id: "train-8", label: "White Poodle", placeholderColor: "#e2e8f0", imageUrl: "assets/white-poodle.jpg", category: "dog", tags: ["white", "long-hair", "adult"] },
+    { id: "train-9", label: "Brown Beagle", placeholderColor: "#a16207", imageUrl: "assets/brown-beagle.jpg", category: "dog", tags: ["brown", "short-hair", "adult"] },
+    { id: "train-10", label: "Dalmatian Puppy", placeholderColor: "#e5e7eb", imageUrl: "assets/dalmation-puppy.jpeg", category: "dog", tags: ["white", "short-hair", "baby"] }
   ],
   testImages: [
     { id: "test-1", label: "Black Cat", placeholderColor: "#1e293b", imageUrl: "", correctCategory: "cat", tags: ["black", "short-hair", "adult"] },

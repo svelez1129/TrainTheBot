@@ -38,22 +38,41 @@ function renderSelectedImages() {
 
         // Style based on label (Blue for Cat, Amber for Dog)
         const borderColor = selection.label === "cat" ? "border-blue-400" : "border-amber-400";
-
-        div.className = "aspect-square rounded-lg flex flex-col items-center justify-center text-center text-xs p-2 border-2 " + borderColor;
-        div.style.backgroundColor = image.placeholderColor;
-
-        // Contrast text
-        const isLightColor = isLight(image.placeholderColor);
-        div.style.color = isLightColor ? "#1e293b" : "#ffffff";
-
-        // Label display
         const labelColor = selection.label === "cat" ? "text-blue-200" : "text-amber-200";
-        div.innerHTML = `
-      <span class="font-bold">${image.label}</span>
-      <span class="${labelColor} text-[10px] mt-1 uppercase tracking-wider border border-current px-1 rounded">
-        Labeled: ${selection.label}
-      </span>
-    `;
+        const labelBg = selection.label === "cat" ? "bg-blue-500/80" : "bg-amber-500/80";
+
+        div.className = "aspect-square rounded-lg flex flex-col items-end justify-end text-center text-xs overflow-hidden border-2 relative " + borderColor;
+
+        if (image.imageUrl) {
+            // Use actual image
+            div.style.backgroundImage = "url(" + image.imageUrl + ")";
+            div.style.backgroundSize = "cover";
+            div.style.backgroundPosition = "center";
+
+            div.innerHTML = `
+                <div class="w-full bg-black/70 text-white p-1">
+                    <div class="font-bold text-[10px]">${image.label}</div>
+                    <div class="${labelBg} text-white text-[9px] mt-0.5 uppercase tracking-wider px-1 rounded inline-block">
+                        ${selection.label}
+                    </div>
+                </div>
+            `;
+        } else {
+            // Fallback to placeholder
+            div.style.backgroundColor = image.placeholderColor;
+            div.classList.add("justify-center", "items-center");
+            div.classList.remove("justify-end", "items-end");
+
+            const isLightColor = isLight(image.placeholderColor);
+            div.style.color = isLightColor ? "#1e293b" : "#ffffff";
+
+            div.innerHTML = `
+                <span class="font-bold">${image.label}</span>
+                <span class="${labelColor} text-[10px] mt-1 uppercase tracking-wider border border-current px-1 rounded">
+                    Labeled: ${selection.label}
+                </span>
+            `;
+        }
 
         container.appendChild(div);
     });

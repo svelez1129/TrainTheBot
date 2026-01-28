@@ -158,13 +158,24 @@ function showFinalResults() {
 
         const item = document.createElement("div");
         const borderColor = sel.label === "fruit" ? "border-green-400" : "border-orange-400";
-        const textColor = sel.label === "fruit" ? "text-green-200" : "text-orange-200";
+        const labelBg = sel.label === "fruit" ? "bg-green-500/80" : "bg-orange-500/80";
 
-        item.className = `w-20 h-20 rounded border-2 ${borderColor} flex flex-col items-center justify-center text-center p-1 text-[10px] bg-slate-800`;
-        item.style.backgroundColor = original.placeholderColor;
-        item.style.color = isLight(original.placeholderColor) ? "#1e293b" : "#ffffff";
+        item.className = `w-20 h-20 rounded border-2 ${borderColor} flex flex-col items-end justify-end text-center text-[10px] overflow-hidden`;
 
-        item.innerHTML = `<div class="font-bold leading-tight mb-1">${original.label}</div><div class="uppercase ${textColor} bg-black/40 px-1 rounded">${sel.label}</div>`;
+        if (original.imageUrl) {
+            item.style.backgroundImage = "url(" + original.imageUrl + ")";
+            item.style.backgroundSize = "cover";
+            item.style.backgroundPosition = "center";
+            item.innerHTML = `<div class="w-full bg-black/70 text-white p-0.5"><div class="font-bold leading-tight">${original.label}</div><div class="${labelBg} text-white uppercase px-1 rounded text-[8px]">${sel.label}</div></div>`;
+        } else {
+            item.style.backgroundColor = original.placeholderColor;
+            item.style.color = isLight(original.placeholderColor) ? "#1e293b" : "#ffffff";
+            item.classList.add("justify-center", "items-center");
+            item.classList.remove("justify-end", "items-end");
+            const textColor = sel.label === "fruit" ? "text-green-200" : "text-orange-200";
+            item.innerHTML = `<div class="font-bold leading-tight mb-1">${original.label}</div><div class="uppercase ${textColor} bg-black/40 px-1 rounded">${sel.label}</div>`;
+        }
+
         grid.appendChild(item);
     });
 
